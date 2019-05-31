@@ -25,10 +25,10 @@ export class StudentAddComponent implements OnInit {
 	studentAddForm: FormGroup;
 	index: any;
 
-	constructor(private formBuilder: FormBuilder, private router: Router,  private studentService: StudentService, private toastr: ToastrService) {
+	constructor(private formBuilder: FormBuilder, private activateRoute: ActivatedRoute, private router: Router,  private studentService: StudentService, private toastr: ToastrService) {
 
 		// Check for route params
-		this.route.params.subscribe(params => {
+		this.activateRoute.params.subscribe(params => {
 			this.index = params['id'];
 			// check if ID exists in route & call update or add methods accordingly
 			if (this.index && this.index !== null && this.index !== undefined) {
@@ -70,17 +70,17 @@ export class StudentAddComponent implements OnInit {
 	createForm(data) {
 		if (data === null) {
 			this.studentAddForm = this.formBuilder.group({
-				first_name: ['', Validators.required, Validators.minLength(3), Validators.maxLength(50)]],
+				first_name: ['',[ Validators.required, Validators.minLength(3), Validators.maxLength(50)]],
 				last_name: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(50)]],
-				phone: ['', Validators.required, ValidationService.checkLimit(5000000000, 9999999999)]],
+				phone: ['', [Validators.required, ValidationService.checkLimit(5000000000, 9999999999)]],
 				email: ['', [Validators.required, ValidationService.emailValidator]]
 			});
 		} else {
-			studentAddForm = this.formBuilder.group({
+			this.studentAddForm = this.formBuilder.group({
 				first_name: [data.studentData.first_name, [Validators.required, Validators.minLength(3), Validators.maxLength(50)]],
-				last_name: [data.studentData.last_name, Validators.required, Validators.minLength(3), Validators.maxLength(50)]],
+				last_name: [data.studentData.last_name, [Validators.required, Validators.minLength(3), Validators.maxLength(50)]],
 				phone: [data.studentData.phone, [Validators.required, ValidationService.checkLimit(5000000000, 9999999999)]],
-				email: [data.studentData.email, Validators.required, ValidationService.emailValidator]]
+				email: [data.studentData.email, [Validators.required, ValidationService.emailValidator]]
 			});
 		}
 	}
