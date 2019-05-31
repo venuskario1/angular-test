@@ -48,7 +48,7 @@ import { AppRoutingModule } from './app-routing.module';
 		RouterModule,
 		AppRoutingModule,
 		FormsModule,
-		ReactiveFormsModule,
+		
 		BrowserAnimationsModule,
 		ToastrModule.forRoot({
 			timeOut: 3000,

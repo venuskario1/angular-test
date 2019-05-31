@@ -11,7 +11,7 @@ import { ToastrService } from 'ngx-toastr';
 import { routerTransition } from '../../services/config/config.service';
 
 @Component({
-	selector: 'app-login',
+	selector: 'app-login-',
 	templateUrl: './login.component.html',
 	styleUrls: ['./login.component.css'],
 	animations: [routerTransition()],

@@ -2,19 +2,18 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent, homeChildRoutes } from './components/home/home.component';
 import { AuthService } from './services/auth/auth.service';
-import { LoginComponent } from './components/login/login.component';
 
 
 // Parent Routes
 const routes: Routes = [
   {
-    path: '',
+    path: '/home',
     component: HomeComponent,
     children: homeChildRoutes,
     canActivate: [AuthService]
   },
   {
-    path: 'login',
+    path: '',
     component: LoginComponent
   },
   {
